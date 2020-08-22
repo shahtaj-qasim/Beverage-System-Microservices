@@ -1,0 +1,154 @@
+[
+  {
+    "bottle": {
+      "id": 1,
+      "inStock": 34,
+      "isAlcoholic": true,
+      "name": "Pils",
+      "price": 0.79,
+      "supplier": "Keesmann",
+      "volume": 0.5,
+      "volumePercent": 4.8
+    },
+    "id": 1,
+    "inStock": 3,
+    "noOfBottles": 20,
+    "price": 14.99
+  },
+
+  {
+    "bottle": {
+      "id": 2,
+      "inStock": 17,
+      "isAlcoholic": true,
+      "name": "Helles",
+      "price": 0.89,
+      "supplier": "Mahr",
+      "volume": 0.5,
+      "volumePercent": 4.9
+    },
+    "id": 2,
+    "inStock": 5,
+    "noOfBottles": 20,
+    "price": 15.99
+  },
+
+  {
+    "bottle": {
+      "id": 3,
+      "inStock": 11,
+      "isAlcoholic": true,
+      "name": "Boxbeutel",
+      "price": 5.79,
+      "supplier": "Divino",
+      "volume": 0.75,
+      "volumePercent": 12.5
+    },
+    "id": 3,
+    "inStock": 7,
+    "noOfBottles": 6,
+    "price": 30.0
+  },
+
+  {
+    "bottle": {
+      "id": 8,
+      "inStock": 57,
+      "isAlcoholic": false,
+      "name": "Wasser",
+      "price": 0.29,
+      "supplier": "Franken Brunnen",
+      "volume": 0.5,
+      "volumePercent": 0.0
+    },
+    "id": 4,
+    "inStock": 11,
+    "noOfBottles": 12,
+    "price": 1.99
+  },
+
+  {
+    "bottle": {
+      "id": 9,
+      "inStock": 42,
+      "isAlcoholic": false,
+      "name": "Spezi",
+      "price": 0.69,
+      "supplier": "Franken Brunnen",
+      "volume": 0.7,
+      "volumePercent": 0.0
+    },
+    "id": 5,
+    "inStock": 13,
+    "noOfBottles": 20,
+    "price": 11.99
+  },
+
+  {
+    "bottle": {
+      "id": 12,
+      "inStock": 69,
+      "isAlcoholic": false,
+      "name": "Cola",
+      "price": 1.79,
+      "supplier": "CCC",
+      "volume": 1.5,
+      "volumePercent": 0.0
+    },
+    "id": 6,
+    "inStock": 4,
+    "noOfBottles": 6,
+    "price": 10.99
+  },
+
+  {
+    "bottle": {
+      "id": 13,
+      "inStock": 12,
+      "isAlcoholic": false,
+      "name": "Cola zero",
+      "price": 2.19,
+      "supplier": "CCC",
+      "volume": 0.2,
+      "volumePercent": 0.0
+    },
+    "id": 7,
+    "inStock": 5,
+    "noOfBottles": 6,
+    "price": 11.99
+  },
+
+  {
+    "bottle": {
+      "id": 14,
+      "inStock": 25,
+      "isAlcoholic": false,
+      "name": "Apple",
+      "price": 1.99,
+      "supplier": "Franken Brunnen",
+      "volume": 0.5,
+      "volumePercent": 0.0
+    },
+    "id": 8,
+    "inStock": 7,
+    "noOfBottles": 20,
+    "price": 35.0
+  },
+
+  {
+    "bottle": {
+      "id": 15,
+      "inStock": 55,
+      "isAlcoholic": false,
+      "name": "Orange",
+      "price": 1.99,
+      "supplier": "Franken Brunnen",
+      "volume": 0.5,
+      "volumePercent": 0.0
+    },
+    "id": 9,
+    "inStock": 9,
+    "noOfBottles": 12,
+    "price": 20.0
+  }
+]
