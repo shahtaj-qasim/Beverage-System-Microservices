@@ -1,0 +1,187 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+data:
+  bottle.json: |-
+    [
+        {
+          "id": 1,
+          "name": "Pils",
+          "volume": 0.5,
+          "isAlcoholic": true,
+          "volumePercent": 4.8,
+          "price": 0.79,
+          "supplier": "Keesmann",
+          "inStock": 34,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 2,
+          "name": "Helles",
+          "volume": 0.5,
+          "isAlcoholic": true,
+          "volumePercent": 4.9,
+          "price": 0.89,
+          "supplier": "Mahr",
+          "inStock": 17,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 3,
+          "name": "Boxbeutel",
+          "volume": 0.75,
+          "isAlcoholic": true,
+          "volumePercent": 12.5,
+          "price": 5.79,
+          "supplier": "Divino",
+          "inStock": 11,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 4,
+          "name": "Tequila",
+          "volume": 0.7,
+          "isAlcoholic": true,
+          "volumePercent": 40.0,
+          "price": 13.79,
+          "supplier": "Tequila Inc.",
+          "inStock": 5,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 5,
+          "name": "Gin",
+          "volume": 0.5,
+          "isAlcoholic": true,
+          "volumePercent": 42.0,
+          "price": 11.79,
+          "supplier": "Hopfengarten",
+          "inStock": 3,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 6,
+          "name": "Export Edel",
+          "volume": 0.5,
+          "isAlcoholic": true,
+          "volumePercent": 4.8,
+          "price": 0.59,
+          "supplier": "Oettinger",
+          "inStock": 66,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 7,
+          "name": "Premium Tafelwasser",
+          "volume": 0.7,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 4.29,
+          "supplier": "Franken Brunnen",
+          "inStock": 12,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 8,
+          "name": "Wasser",
+          "volume": 0.5,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 0.29,
+          "supplier": "Franken Brunnen",
+          "inStock": 57,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 10,
+          "name": "Grape Mix",
+          "volume": 0.5,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 0.59,
+          "supplier": "Franken Brunnen",
+          "inStock": 12,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 11,
+          "name": "Still",
+          "volume": 1.0,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 0.66,
+          "supplier": "Franken Brunnen",
+          "inStock": 34,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 12,
+          "name": "Cola",
+          "volume": 1.5,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 1.79,
+          "supplier": "CCC",
+          "inStock": 69,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 13,
+          "name": "Cola Zero",
+          "volume": 2.0,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 2.19,
+          "supplier": "CCC",
+          "inStock": 12,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 14,
+          "name": "Apple",
+          "volume": 0.5,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 1.99,
+          "supplier": "Juice Factory",
+          "inStock": 25,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 15,
+          "name": "Orange",
+          "volume": 0.5,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 1.99,
+          "supplier": "Juice Factory",
+          "inStock": 55,
+          "beverageType": "BOTTLE"
+        },
+        {
+          "id": 16,
+          "name": "Lime",
+          "volume": 0.5,
+          "isAlcoholic": false,
+          "volumePercent": 0.0,
+          "price": 2.99,
+          "supplier": "Juice Factory",
+          "inStock": 8,
+          "beverageType": "BOTTLE"
+        }
+      ]
+  crate.json: "[\r\n  {\r\n    \"bottle\": {\r\n      \"id\": 1,\r\n      \"inStock\":
+    34,\r\n      \"isAlcoholic\": true,\r\n      \"name\": \"Pils\",\r\n      \"price\":
+    0.79,\r\n      \"supplier\": \"Keesmann\",\r\n      \"volume\": 0.5,\r\n      \"volumePercent\":
+    4.8\r\n    },\r\n    \"id\": 1,\r\n    \"inStock\": 3,\r\n    \"noOfBottles\":
+    20,\r\n    \"price\": 14.99\r\n  }\r\n]"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2020-08-09T20:00:15Z"
+  name: soa-config-ok1
+  namespace: default
+  resourceVersion: "59160791"
+  selfLink: /api/v1/namespaces/default/configmaps/soa-config-ok
+  uid: f15856dd-da7a-11ea-b5a0-42010a800127
