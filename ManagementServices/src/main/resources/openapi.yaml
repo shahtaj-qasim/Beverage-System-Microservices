@@ -1,0 +1,430 @@
+# open api speicification document - header with version
+# document should be named openapi.yaml or openapi.json
+openapi: "3.0.4"
+# general information
+info:
+  title: Beverage Service
+  version: "1.0"
+  description: | # | for multi line description
+    SOA Assignment_01 group 14
+# resources (one of the REST principles)
+servers:
+  - url: http://localhost:9999/v1
+    description: Development Server
+components:
+  # data elements (JSON)
+  schemas:
+    OrderStatus:
+      type: string
+      enum: [SUBMITTED, PROCESSED, CANCELLED]
+    OrderDTO:
+      type: object
+      required:
+        - orderId
+        - orderItems
+        - price
+        - status
+      properties:
+        orderId:
+          type: number
+        orderItems:
+          $ref: '#/components/schemas/OrderItemDTO'
+        price:
+          type: number
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+    BeverageType:
+      type: string
+      enum: [BOTTLE, CRATE]
+    BeverageDTO:
+      type: object
+      required:
+        - id
+        - price
+        - beverageType
+      properties:
+        id:
+          type: number
+        price:
+          type: number
+        beverageType:
+          $ref: '#/components/schemas/BeverageType'
+    OrderItemDTO:
+      type: object
+      required:
+        - number
+        - beverage
+        - quantity
+      properties:
+        number:
+          type: number
+        beverage:
+          $ref: '#/components/schemas/BeverageDTO'
+        quantity:
+          type: number
+    errorMessage:
+      type: object
+      required:
+        - errorType
+      properties:
+        errorType:
+          description: error category, should be extended
+          enum:
+            - INVALID_PARAMETER
+        message:
+          type: string
+          description: A detailed error description
+    BottleDTO:
+      type: object
+      required:
+        - name
+        - volume
+        - isAlcoholic
+        - volumePercent
+        - price
+        - supplier
+        - inStock
+      properties:
+        name:
+          type: string
+        volume:
+          type: number
+        isAlcoholic:
+          type: boolean
+        volumePercent:
+          type: number
+        price:
+          type: number
+        supplier:
+          type: string
+        inStock:
+          type: number
+    CrateDTO:
+      type: object
+      required:
+        - bottle
+        - noOfBottles
+        - price
+        - inStock
+      properties:
+        bottle:
+          $ref: '#/components/schemas/BottleDTO'
+        noOfBottles:
+          type: number
+        price:
+          type: number
+        inStock:
+          type: number
+
+# resources (one of the REST principles)
+paths:
+  /Bottle/getBottles:
+    description: A catalogue for all the bottles
+    get:
+      summary: Get list of bottles based on filters
+      # request parameters
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: number
+            default: "0"
+        - name: pageSize
+          in: query
+          schema:
+            type: number
+            default: 10
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+            default: "0"
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+            default: 10
+        - name: query
+          in: query
+          allowEmptyValue: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        200:
+          description: Bottles on the page
+          content:
+            application/json:
+              schema:
+                type: string
+        400:
+          description: A bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+  /Bottle/{bottleId}:
+    description: A catalogue to get bottle
+    get:
+      summary: Get a bottle using BottleId
+      parameters:
+        - name: bottleId
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        200:
+          description: Bottle found by Bottle Id
+          content:
+            application/*:
+              schema:
+                $ref: '#/components/schemas/BottleDTO'
+        404:
+          description: Bottle not found
+  /Bottle/addBottle:
+    description: A catalogue to add the bottles
+    post:
+      summary: Add a bottle to DB
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BottleDTO'
+      responses:
+        201:
+          description: Bottle added successfully
+        400:
+          description: Message body was empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+  /Bottle/updateBottle/{bottleId}:
+    description: A catalogue to update bottle
+    put:
+      summary: Update bottle based on BottleId
+      parameters:
+        - name: bottleId
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BottleDTO'
+      responses:
+        200:
+          description: Updating a bottle
+          content:
+            application/*:
+              # response schema
+              schema:
+                $ref: "#/components/schemas/BottleDTO"
+        400:
+          description: Body was empty
+          content:
+            application/*:
+              schema:
+                $ref: "#/components/schemas/errorMessage"
+        404:
+          description: Not found
+  /Crate/getCrates:
+    description: A catalogue for all the crates
+    get:
+      summary: Get list of crates based on filters
+      # request parameters
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: number
+            default: "0"
+        - name: pageSize
+          in: query
+          schema:
+            type: number
+            default: 10
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+            default: "0"
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+            default: 100
+        - name: query
+          in: query
+          allowEmptyValue: true
+          schema:
+            type: string
+            nullable: true
+      responses:
+        200:
+          description: Crates on the page
+          content:
+            application/json:
+              schema:
+                type: string
+        400:
+          description: A bad request initiated by user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+  /Crate/{crateId}:
+    description: A catalogue to get crate
+    get:
+      summary: Get a crate using crateId
+      parameters:
+        - name: crateId
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        200:
+          description: Crate found by Crate Id
+          content:
+            application/*:
+              schema:
+                $ref: '#/components/schemas/CrateDTO'
+        404:
+          description: Crate not found
+  /Crate/addCrate:
+    description: A catalogue to add the Crate
+    post:
+      summary: Add a Crate to DB
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrateDTO'
+      responses:
+        201:
+          description: Bottle added successfully
+        400:
+          description: Message body was empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorMessage'
+  /Crate/updateCrate/{crateId}:
+    description: A catalogue to update crate
+    put:
+      summary: Update Crate based on CradeId
+      parameters:
+        - name: crateId
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrateDTO'
+      responses:
+        200:
+          description: Updating crate details
+          content:
+            application/*:
+              # response schema
+              schema:
+                $ref: "#/components/schemas/CrateDTO"
+        400:
+          description: Body was empty
+          content:
+            application/*:
+              schema:
+                $ref: "#/components/schemas/errorMessage"
+        404:
+          description: Not found
+  /Order/{orderId}:
+    parameters:
+      - name: orderId
+        required: true
+        in: path
+        schema:
+          type: number
+    get:
+      summary: Get order based on orderId
+      responses:
+        200:
+          description: Order identified by OrderId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDTO'
+        404:
+          description: Order not found
+    put:
+      summary: Update an existing Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderDTO'
+      responses:
+        200:
+          description: Updating an Order
+          content:
+            application/*:
+              # response schema
+              schema:
+                $ref: "#/components/schemas/OrderDTO"
+        400:
+          description: Message body was empty
+          content:
+            application/*:
+              schema:
+                $ref: "#/components/schemas/errorMessage"
+        404:
+          description: Not found
+
+  /Order/{orderId}/{newStatus}:
+    put:
+      parameters:
+      - name: orderId
+        required: true
+        in: path
+        schema:
+          type: number
+      - name: newStatus
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        200:
+          description: Order Updated
+        404:
+          description: Order cannot be updated
+        400:
+          description: Status cannot be null
+
+  /Order/createOrder:
+    description: A catalogue to create a new Order
+    post:
+      summary: Create a new order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderDTO'
+      responses:
+        201:
+          description: Order created successfully
+        400:
+          description: Message body was empty
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/errorMessage"
+
+
+
