@@ -1,4 +1,4 @@
-SOA Assignment 2 Summer Term 2020 - Group 14
+## Beverage Management System using Microservices - Docker and Kubernetes
 
 ## Artefacts, you have to submit
 - Source Code
