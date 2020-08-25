@@ -1,12 +1,5 @@
 ## Beverage Management System using Microservices - Docker and Kubernetes
 
-## Artefacts, you have to submit
-- Source Code
-- docker-compose.yml
-- kubernetes.yaml
-- soa-config-ok.yaml
-- insomnia.json
-
 # Our Approach
  
  Our images are running on 'alpine-net' network. Please run command to create network -  docker create network alpine-net
@@ -17,6 +10,13 @@
  
  To run kubernetes, please run - kubectl apply -f kubernetes.yaml
  
+## Technologies
+1. Java EE
+2. Gradle
+3. Docker
+4. Kubernetes
+5. Insomnia
+
 
 @authors:
 Deepika Arneja
